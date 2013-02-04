@@ -1,0 +1,8 @@
+{
+  "name": "myProject",
+  "version": "1.0.0",
+  "main": ["./path/to/app.css", "./path/to/app.js", "./path/to/sprite.img"],
+  "dependencies": {
+    "angular": ""
+  }
+}
