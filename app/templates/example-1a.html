@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>AngularJS - Example 1a</title>
+	<link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+	<div class="container" style="margin-top:50px">
+      <div class="hero-unit">
+          <div>
+            <label>Name:</label>
+            <input id="inputName" type="text" placeholder="Enter a name here">
+            <hr>
+            <div id="view"></div>
+          </div>
+      </div>
+    </div>
+
+    <script src="/scripts/vendor/jquery.min.js"></script>
+    <script src="/scripts/vendor/underscore/underscore.js"></script>
+    <script src="/scripts/vendor/backbone/backbone.js"></script>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function() {
+
+            var Model = Backbone.Model.extend({
+
+              defaults: {'name': ''}
+
+            });
+
+            var View = Backbone.View.extend({
+
+              tagName: 'h1',
+
+              template: _.template('Hello <%= name %>!'),
+
+              initialize: function() {
+                this.model = this.options.model;
+                this.model.on('change', this.render, this);
+              },
+
+              render: function() {
+                $(this.el).text(this.template({name: this.model.get('name')}));
+                return this;
+              }
+
+            });
+            
+            var model = new Model();
+            var view = new View({model: model});
+            
+            $('#inputName').keyup(function(e) {
+              model.set('name', $(e.target).val());
+            });
+
+            $('#view').html(view.render().el);
+        });
+    </script>
+
+</body>
+</html>
