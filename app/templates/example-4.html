@@ -9,15 +9,15 @@
 
 	<div class="container" style="margin-top:50px" ng-controller="VoucherController">
 
-        <div class="span4">
+        <div class="span8">
             <div class="input-append">
-              <input class="span2" type="text" ng-model="voucherCode">
-              <button class="btn" type="button">OK</button>
+              <input class="span2" type="text" ng-model="voucherCode" ng-change="validate(voucherCode)">
+              <button class="btn" type="button" ng-disabled="!isValid" ng-click="encash(voucherCode)">OK</button>
             </div>
-            
+            <span class="text-error" ng-show="error">{{error}}</span>
         </div>
 
-
+        
         <div class="row span8">
             <table class="table">
                 <thead>
@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="code in codes">
+                    <tr ng-repeat="code in codes" ng-class="{success: code.encashed}">
                       <td>{{code.id}}</td>
                       <td>{{code.encashed}}</td>
                     </tr>

@@ -11,18 +11,20 @@ function VoucherController($scope) {
 	var codePattern = /^[a-z]{3}\.[a-z]{3}\.[a-z]{3}$/;
 
 	$scope.codes = codes;
+	$scope.isValid = false;
 
 	$scope.validate = function(code) {
-		return codePattern.test(code);
+		$scope.error = '';
+		$scope.isValid = codePattern.test(code);
 	};
 
 	$scope.encash = function(codeToEncash) {
-		if(codePattern.test(codeToEncash)) {
+		if($scope.isValid) {
 
-			var code = codes.filter(function(c) {return c === codeToEncash;});
+			var code = codes.filter(function(c) {return c.id === codeToEncash;}).shift();
 
-			if(!code) { throw new Error('code not found. '); }
-			if(code.encashed) { throw new Error('code has already been encashed.'); }
+			if(!code) { return $scope.error = 'code not found.'; }
+			if(code.encashed) { return $scope.error = 'code has already been encashed.'; }
 
 			code.encashed = true;
 		}
