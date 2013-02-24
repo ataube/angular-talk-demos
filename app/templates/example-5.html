@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="voucherModule">
 <head>
-	<title>Example 4</title>
+	<title>AngularJS - Example 5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/styles/bootstrap.css" media="screen">
 </head>
 <body>
 
-	<div class="container" style="margin-top:50px" ng-controller="VoucherController">
+	<div class="container" style="margin-top:50px" ng-controller="VoucherValidationController">
 
-        <div class="span8">
+        <div class="span8" ng-controller="VoucherInputController">
             <div class="input-append">
                 <label>Enter your voucher code:</label>
                 <input class="span2" type="text" ng-model="voucherCode" ng-change="validate(voucherCode)">
-                <button class="btn" type="button" ng-disabled="!isValid" ng-click="encash(voucherCode)">OK</button>
+                <button class="btn" type="button" ng-disabled="!validate(voucherCode)" ng-click="encash(voucherCode)">OK</button>
             </div>
             <span class="text-error" ng-show="error">{{error}}</span>
         </div>
 
         
-        <div class="row span8">
+        <div class="row span8" ng-controller="VoucherListController">
             <table class="table">
                 <thead>
                     <tr>
@@ -34,14 +34,19 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        
 
+            <div ng-controller="VoucherAddController">
+                <div class="input-append">
+                    <input class="span2" type="text" ng-model="newVoucherCode" ng-change="validate(newVoucherCode)">
+                    <button class="btn" type="button" ng-disabled="!validate(newVoucherCode)" ng-click="add(newVoucherCode)">Add</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 
     <script src="/scripts/vendor/angular/angular.js"></script>
-    <script src="/scripts/example-4-script.js"></script>
+    <script src="/scripts/example-5-script.js"></script>
 
 </body>
 </html>

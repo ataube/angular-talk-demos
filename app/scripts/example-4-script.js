@@ -18,10 +18,10 @@ function VoucherController($scope) {
 		$scope.isValid = codePattern.test(code);
 	};
 
-	$scope.encash = function(codeToEncash) {
+	$scope.encash = function(codeId) {
 		if($scope.isValid) {
 
-			var code = codes.filter(function(c) {return c.id === codeToEncash;}).shift();
+			var code = codes.filter(function(c) {return c.id === codeId;}).shift();
 
 			if(!code) { return $scope.error = 'code not found.'; }
 			if(code.encashed) { return $scope.error = 'code has already been encashed.'; }
