@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": ["./path/to/app.css", "./path/to/app.js", "./path/to/sprite.img"],
   "dependencies": {
-    "angular": ""
+  	"jquery": "",
+  	"underscore": "",
+	"backbone": "",
+	"angular": ""
   }
 }

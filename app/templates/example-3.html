@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>AngularJS - Example 1</title>
+	<link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+	<div class="container" style="margin-top:50px">
+        <div class="hero-unit">
+            <h1>Expressions and Filters</h1>
+            <h3><spam ng-non-bindable>{{1+1}} -> </spam>{{1+1}}</h3>
+            <h3><span ng-non-bindable>{{new Date() | date:'fullDate'}} -> </span> {{1288323623006 | date:'fullDate'}}</h3>
+            <h3><span ng-non-bindable>{{0.1568 | number:2}} -> </span>{{0.1568 | number:2}}</h3>
+            <h3><span ng-non-bindable>{{'Hello World![0]'}} -> </span>{{'Hello World!'[0]}}</h3>
+        </div>
+    </div>
+
+    <script src="/scripts/vendor/angular/angular.js"></script>
+
+</body>
+</html>
