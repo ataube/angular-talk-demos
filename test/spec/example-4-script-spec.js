@@ -1,4 +1,4 @@
-describe('VoucherController', function() {
+describe('VoucherControllerSpec', function() {
   
 	var scope;
 
