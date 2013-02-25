@@ -1,6 +1,7 @@
 
+'use strict';
+
 function VoucherController($scope) {
-	'use strict';
 
 	var codes = [
 		{ id: 'aaa.bbb.ccc', encashed: true },
